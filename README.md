@@ -10,13 +10,6 @@
 
 Vulnerability Research  ·  Exploit Development  ·  Reverse Engineering
 
-`offensive security researcher · bug bounty hunter · 0-day research`
-
-[![GitHub](https://img.shields.io/badge/GitHub-nullwhisper-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/nullwhisper)
-[![Profile Views](https://komarev.com/ghpvc/?username=nullwhisper&style=flat-square&color=0f7fc1)](https://github.com/nullwhisper)
-
-<br>
-
 ```c
 /*
  * whisper.c — minimal reverse shell, stripped
@@ -66,33 +59,5 @@ int main(int argc, char **argv) {
 <br>
 
 Research published for educational and authorized testing purposes only. CVEs under responsible disclosure.
-
-</div>
-
----
-
-<div align="center">
-
-### ⚔️ Arsenal
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
-![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-121011?style=flat-square&logo=gnu-bash&logoColor=white)
-
-![Burp Suite](https://img.shields.io/badge/Burp_Suite-FF6633?style=flat-square&logo=burpsuite&logoColor=white)
-![Nuclei](https://img.shields.io/badge/Nuclei-1B1B1D?style=flat-square)
-![Frida](https://img.shields.io/badge/Frida-FF4081?style=flat-square)
-![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white)
-
-### 📊 Stats
-
-<img src="https://ghchart.rshah.org/0f7fc1/nullwhisper?v=2" alt="Contribution Graph" width="98%">
-
-### 📡 Reach
-
-| Platform | Handle |
-|----------|--------|
-| GitHub | [@nullwhisper](https://github.com/nullwhisper) |
 
 </div>
