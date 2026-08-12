@@ -1,4 +1,7 @@
-<h1 align="center">Hi there, I'm <code>alfacyber7</code> 👋</h1>
+<h1 align="center">Hi there, I'm <code>nullwhisper</code> 👋</h1>
+<p align="center">
+  <sub>by <code>alfacyber7</code></sub>
+</p>
 <p align="center">
   <b>Bug Bounty Hunter · Security Researcher · Ethical Hacker</b>
 </p>
