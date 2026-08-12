@@ -88,8 +88,7 @@ Research published for educational and authorized testing purposes only. CVEs un
 
 ### 📊 Stats
 
-<img src="https://github-readme-stats.vercel.app/api?username=nullwhisper&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&text_color=0f7fc1&icon_color=0f7fc1" alt="GitHub Stats" width="49%">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=nullwhisper&theme=github-dark&hide_border=true&bg_color=0d1117&color=0f7fc1" alt="Activity Graph" width="49%">
+<img src="https://ghchart.rshah.org/0f7fc1/nullwhisper" alt="Contribution Graph" width="98%">
 
 ### 📡 Reach
 
