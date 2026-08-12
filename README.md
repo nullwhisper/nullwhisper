@@ -87,7 +87,7 @@ Research published for educational and authorized testing purposes only. CVEs un
 
 ### 📊 Stats
 
-<img src="https://ghchart.rshah.org/0f7fc1/nullwhisper" alt="Contribution Graph" width="98%">
+<img src="https://ghchart.rshah.org/0f7fc1/nullwhisper?v=2" alt="Contribution Graph" width="98%">
 
 ### 📡 Reach
 
